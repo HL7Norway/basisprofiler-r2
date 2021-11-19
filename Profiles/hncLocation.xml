@@ -1,0 +1,367 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="hncLocation" />
+  <meta>
+    <lastUpdated value="2015-10-24T07:41:03.495+11:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://hl7.no/fhir/StructureDefinition/hncLocation" />
+  <name value="hncLocation " />
+  <status value="draft" />
+  <publisher value="Health Level Seven International (Patient Administration)" />
+  <date value="2015-10-24T07:41:03+11:00" />
+  <description value="Base StructureDefinition for Location Resource d&#xD;&#xA;" />
+  <fhirVersion value="1.0.2" />
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/w5" />
+    <name value="W5 Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/DomainResource" />
+  <differential>
+    <element>
+      <path value="Location" />
+      <short value="Details and position information for a physical place" />
+      <definition value="Details and position information for a physical place where services are provided  and        resources and participants may be stored, found, contained or accommodated." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="DomainResource" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".Role[classCode=SDLC]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.entity" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.description" />
+      <short value="Description of the location" />
+      <definition value="Description of the Location, which helps in finding or referencing the place." />
+      <requirements value="Humans need additional information to verify a correct location has been identified." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".playingEntity[classCode=PLC determinerCode=INSTANCE].desc" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.mode" />
+      <short value="instance | kind" />
+      <definition value="Indicates whether a resource instance represents a specific location or a class of locations." />
+      <requirements value="When using a Location resource for scheduling or orders, we need to be able to refer to        a class of Locations instead of a specific Location." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="code" />
+      </type>
+      <isModifier value="true" />
+      <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Indicates whether a resource instance represents a specific location or a class of locations." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/location-mode" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".playingEntity[classCode=PLC].determinerCode" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.type" />
+      <short value="Type of function performed" />
+      <definition value=" https://volven.helsedirektoratet.no/produkt.asp?id=271962&amp;catID=3&amp;subID=8" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="extensible" />
+        <description value="Indicates the type of function performed at the location." />
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.type.coding.system" />
+      <short value="The code system for organizational designation as defined by the Norwegian Directorate of Health" />
+      <definition value="The identification of the code system that defines the meaning of the symbol in the code." />
+      <comments value="The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously." />
+      <requirements value="Need to be unambiguous about the source of the definition of the symbol." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.1.8624" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="C*E.3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./codeSystem" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.type.coding.version" />
+      <short value="Version of the system - if relevant" />
+      <definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
+      <comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="C*E.7" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./codeSystemVersion" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.type.coding.code" />
+      <short value="Symbol in syntax defined by the system" />
+      <definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+      <requirements value="Need to refer to a particular code in the system." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="code" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="preferred" />
+        <valueSetUri value=" " />
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="C*E.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./code" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.type.coding.userSelected" />
+      <short value="If this coding was chosen directly by the user" />
+      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+      <comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
+      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="boolean" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Sometimes implied by being first" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="CD.codingRationale" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.telecom" />
+      <short value="Contact details of the location" />
+      <definition value="The contact details of communication devices available at the location. This can include        phone numbers, fax numbers, mobile numbers, email addresses and web sites." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="ContactPoint" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".telecom" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.address" />
+      <short value="Physical location" />
+      <definition value="Physical location." />
+      <comments value="This was kept as 0..1 as there is no use property on the address, so wouldn't be able        to identify different address types." />
+      <requirements value="If locations can be visited, we need to keep track of their address." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Address" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".addr" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.physicalType" />
+      <short value="Physical form of the location" />
+      <definition value="Physical form of the location, e.g. building, room, vehicle, road." />
+      <requirements value="For purposes of showing relevant locations in queries, we need to categorize locations." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="Physical form of the location" />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/location-physical-type" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".playingEntity [classCode=PLC].code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.position" />
+      <short value="The absolute geographic location" />
+      <definition value="The absolute geographic location of the Location, expressed using the WGS84 datum (This        is the same co-ordinate system used in KML)." />
+      <requirements value="For mobile applications and automated route-finding knowing the exact location of the        Location is required." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".playingEntity [classCode=PLC determinerCode=INSTANCE].positionText" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.position.longitude" />
+      <short value="Longitude with WGS84 datum" />
+      <definition value="Longitude. The value domain and the interpretation are the same as for the text of the        longitude element in KML (see notes below)." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="decimal" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="(RIM Opted not to map the sub-elements of GPS location, is now an OBS)" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.position.latitude" />
+      <short value="Latitude with WGS84 datum" />
+      <definition value="Latitude. The value domain and the interpretation are the same as for the text of the        latitude element in KML (see notes below)." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="decimal" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="(RIM Opted not to map the sub-elements of GPS location, is now an OBS)" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.position.altitude" />
+      <short value="Altitude with WGS84 datum" />
+      <definition value="Altitude. The value domain and the interpretation are the same as for the text of the        altitude element in KML (see notes below)." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="decimal" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="(RIM Opted not to map the sub-elements of GPS location, is now an OBS)" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.managingOrganization" />
+      <short value="Organization responsible for provisioning and upkeep.  For poliklinc and wards this should normaly point to the department responsible for operation of the locations.  " />
+      <definition value="The organization responsible for the provisioning and upkeep of the location." />
+      <comments value="This can also be used as the part of the organization hierarchy where this location provides        services. These services can be defined through the HealthcareService resource." />
+      <requirements value="Need to know who manages the location." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".scopingEntity[classCode=ORG determinerKind=INSTANCE]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.partOf" />
+      <short value="Another Location this one is physically part of" />
+      <definition value="Another Location which this Location is physically part of. Would normaly be a geographic area like Bodø or Vesterålen." />
+      <requirements value="For purposes of location, display and identification, knowing which locations are located        within other locations is important." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/hncLocation" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".inboundLink[typeCode=PART].source[classCode=SDLC]" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

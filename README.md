@@ -1,2 +1,1 @@
-# basisprofiler-r2
-HL7 FHIR Base profiles for Norway - R2
+This is the Affilate portal for HL7 Norway. It will contain national profiles and implementation guides developed by HL7 Norway members.
